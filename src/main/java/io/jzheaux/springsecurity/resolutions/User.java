@@ -1,11 +1,6 @@
 package io.jzheaux.springsecurity.resolutions;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -77,13 +72,22 @@ public class User implements Serializable {
     }
 
 	public Collection<UserAuthority> getUserAuthorities() {
-		return userAuthorities;
+        return userAuthorities;
     }
 
-	public void grantAuthority(String authority) {
-		this.userAuthorities.add(new UserAuthority(this, authority));
+    public void grantAuthority(String authority) {
+        this.userAuthorities.add(new UserAuthority(this, authority));
     }
+
     public User(boolean enabled, Collection<UserAuthority> userAuthorities) {
+        this.enabled = enabled;
+        this.userAuthorities = userAuthorities;
+    }
+
+    public User(UUID id, String username, String password, boolean enabled, Collection<UserAuthority> userAuthorities) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
         this.enabled = enabled;
         this.userAuthorities = userAuthorities;
     }

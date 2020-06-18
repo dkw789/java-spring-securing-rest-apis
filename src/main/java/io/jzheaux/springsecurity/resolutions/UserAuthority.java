@@ -1,10 +1,6 @@
 package io.jzheaux.springsecurity.resolutions;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity(name="authorities")
@@ -50,5 +46,4 @@ public class UserAuthority {
 	public void setAuthority(String authority) {
         this.authority = authority;
     }
-
 }
