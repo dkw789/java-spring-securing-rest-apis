@@ -38,6 +38,4 @@ public class ResolutionInitializer implements SmartInitializingSingleton {
 		haswrite.grantAuthority("resolution:write");
 		this.users.save(haswrite);
 	}
-
-
 }
